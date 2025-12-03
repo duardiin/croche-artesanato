@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mãos que Criam | Artesanato Local</title>
+    <meta name="description" content="Grupo de artesãos locais dedicados a criar peças únicas feitas à mão. Cerâmica, macramê, bijuterias e cestaria artesanal." />
+    <meta name="keywords" content="artesanato, feito à mão, cerâmica, macramê, bijuterias, cestaria, artesãos locais" />
+    <meta name="author" content="Mãos que Criam" />
+    <link rel="canonical" href="https://maosquecriam.com.br" />
+
+    <meta property="og:title" content="Mãos que Criam | Artesanato Local" />
+    <meta property="og:description" content="Grupo de artesãos locais dedicados a criar peças únicas feitas à mão." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mãos que Criam | Artesanato Local" />
+    <meta name="twitter:description" content="Grupo de artesãos locais dedicados a criar peças únicas feitas à mão." />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+
+  <script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+<script>
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = anchor.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                lenis.scrollTo(targetElement, {
+                    offset: 0,
+                    duration: 1.5,
+                });
+            }
+        });
+    });
+</script>
+
+</html>
